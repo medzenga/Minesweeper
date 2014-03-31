@@ -1,0 +1,38 @@
+Matt Edzenga MineSweeper Notes:
+
+-main requirements:
+	-resizable grid of blocks
+	-each block needs to easily read the blocks next to it
+		-could use a 2d array for this
+		-each block would store its x/y position
+-block manager class layout:
+	-blocks[x][y]
+	-GenerateBlockLayout
+	-xDim
+	-yDim
+	-totalMines
+-block class layout:
+	-Block(isMineIn, numDispIn)
+	-isFlagged
+	-isMine
+	-numDisp
+	-isClicked
+	-doClick()
+	-toggleFlag()
+-main click algorithm (from doClick)
+	-check if the current block is a mine
+		-if so, lose the game
+		-if not, check the numDisp of the block
+			-if the numdisp is 0, then check the 8 surrounding blocks for if they are 0 as well
+				-any blocks that are 0, do a doClick() operation
+-block layout algorithm
+	-pick a random number from 0 to each dimension max
+	-repeat the above action until the totalMines requirement is met
+		-check if each new mine is a spot already occupied by a mine
+			-if so, generate a new random position
+-game win check
+	-if all blocks on the board are either marked as "isClicked" or "isBomb", then the player wins
+	-can do this after every click action
+
+-intro
+	
